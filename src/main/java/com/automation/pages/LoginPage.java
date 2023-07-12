@@ -1,11 +1,13 @@
 package com.automation.pages;
 
 import com.automation.base.TestBase;
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Log4j
 public class LoginPage extends TestBase {
 
     @FindBy(xpath = "//input[@name='username']")
@@ -15,19 +17,17 @@ public class LoginPage extends TestBase {
     WebElement passWord;
     @FindBy(xpath = "//a[@id='loginButton']")
     WebElement loginButton;
-    @FindBy(xpath = "//input[@name='remember']")
-    WebElement keepmeLoggedinCheckBox;
-    @FindBy(xpath = "//a[@id='toPasswordRecoveryPageLink']")
-    WebElement forgotYourPasswordLink;
-    @FindBy(xpath = "//div[@class='atLogoImg']")
-    WebElement actiTimeLogo;
 
     public LoginPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public Boolean validateActiTimeLogo() {
-        return actiTimeLogo.isDisplayed();
+
+    public HomePage loging(String uName, String pword)   {
+        userName.sendKeys(uName);
+        passWord.sendKeys(pword);
+        loginButton.click();
+        return new HomePage();
     }
     public void enterUserName(String uName) {
         userName.sendKeys(uName);
@@ -39,7 +39,6 @@ public class LoginPage extends TestBase {
         }
     }
     public void enterPassword(String pwd) {
-
         passWord.sendKeys(pwd);
 
         try {

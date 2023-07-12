@@ -2,7 +2,6 @@ package com.automation.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +26,7 @@ public class TestBase {
         }
     }
 
-    public static void initialization(){
+    public static void initializationProcess(){
         String browserName = properties.getProperty("browser");
         if(browserName.equals("chrome")){
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\resources\\Webdriver\\chromedriver.exe");

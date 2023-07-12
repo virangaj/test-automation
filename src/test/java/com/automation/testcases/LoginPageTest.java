@@ -1,43 +1,40 @@
 package com.automation.testcases;
 
 import com.automation.base.TestBase;
+import com.automation.pages.HomePage;
 import com.automation.pages.LoginPage;
 import com.automation.utils.TestUtils;
+import lombok.extern.log4j.Log4j;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+@Log4j
 public class LoginPageTest extends TestBase {
     LoginPage loginPage;
-
+    HomePage homePage;
     String sheetName = "Users";
     TestUtils testUtil;
-
 
     public LoginPageTest() {
         super();
     }
 
-
     @BeforeMethod
     public void setup() {
-        initialization();
+        initializationProcess();
         loginPage = new LoginPage();
     }
-
-
-    @Test(priority = 1)
-    public void loginPageLogoTest() {
-        boolean flag = loginPage.validateActiTimeLogo();
-        Assert.assertTrue(flag);
-    }
-
 
     @DataProvider
     public Object[][] getactiTimeTestData() {
         return TestUtils.getTestData(sheetName);
+    }
+
+    @Test(priority = 1, dataProvider="getactiTimeTestData")
+    public void LoginTest(String userName, String password) {
+        homePage = loginPage.loging(userName, password);
     }
 
     @AfterMethod

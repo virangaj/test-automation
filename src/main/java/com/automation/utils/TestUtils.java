@@ -1,6 +1,7 @@
 package com.automation.utils;
 
 import com.automation.base.TestBase;
+import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -14,12 +15,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+@Log4j
 public class TestUtils extends TestBase {
-    public static long PAGE_LOAD_TIMEOUT =40;
+    public static long PAGE_LOAD_TIMEOUT = 40;
     public static long IMPLICIT_WAIT = 40;
 
-    public void swithToFrame(String framaName) {
+    public void switchToFrame(String framaName) {
         driver.switchTo().frame(framaName);
     }
 
@@ -27,7 +28,6 @@ public class TestUtils extends TestBase {
     static Workbook book;
     static Sheet sheet;
     static JavascriptExecutor js;
-
 
     public void switchToFrame() {
         driver.switchTo().frame("mainpanel");
@@ -41,6 +41,7 @@ public class TestUtils extends TestBase {
             e.printStackTrace();
         }
         try {
+            assert file != null;
             book = WorkbookFactory.create(file);
         } catch (InvalidFormatException e) {
             e.printStackTrace();
