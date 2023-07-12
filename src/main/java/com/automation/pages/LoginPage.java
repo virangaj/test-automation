@@ -27,6 +27,8 @@ public class LoginPage extends TestBase {
         userName.sendKeys(uName);
         passWord.sendKeys(pword);
         loginButton.click();
+        log.info("Login using Username : "+ uName + " and password :"+ pword);
+
         return new HomePage();
     }
     public void enterUserName(String uName) {

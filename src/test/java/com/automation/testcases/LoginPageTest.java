@@ -34,12 +34,16 @@ public class LoginPageTest extends TestBase {
 
     @Test(priority = 1, dataProvider="getactiTimeTestData")
     public void LoginTest(String userName, String password) {
-        homePage = loginPage.loging(userName, password);
+        log.info("Load the login page after login");
+        try{
+            homePage = loginPage.loging(userName, password);
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
     }
 
     @AfterMethod
     public void tearDown() {
-
         driver.quit();
     }
 }

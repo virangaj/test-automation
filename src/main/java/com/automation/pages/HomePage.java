@@ -9,13 +9,12 @@ public class HomePage extends TestBase {
 
 
     //Page Factory - Object Repository
-
     @FindBy(xpath = "//a[@class='content tasks']")
     WebElement taskLink;
-
     @FindBy(xpath = "//a[@class='content reports']")
     WebElement reportsLink;
-
+    @FindBy(xpath = "//a[@class='content users']")
+    WebElement userLink;
 
 
     //initialization
@@ -23,7 +22,25 @@ public class HomePage extends TestBase {
         PageFactory.initElements(driver, this);
     }
 
+    public TasksPage clickOnTaskLink() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.toString());
+        }
+        taskLink.click();
+        return new TasksPage();
+    }
 
+    public UserPage clickOnUserLink() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.toString());
+        }
+        userLink.click();
+        return new UserPage();
+    }
 
 
 }

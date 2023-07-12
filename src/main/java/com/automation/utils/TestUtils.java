@@ -43,10 +43,8 @@ public class TestUtils extends TestBase {
         try {
             assert file != null;
             book = WorkbookFactory.create(file);
-        } catch (InvalidFormatException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (InvalidFormatException | IOException e) {
+            System.out.println(e.toString());
         }
         sheet = book.getSheet(sheetName);
         Object[][] data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
