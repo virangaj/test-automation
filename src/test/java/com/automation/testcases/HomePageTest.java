@@ -30,6 +30,11 @@ public class HomePageTest extends TestBase {
     public void homePageUserLinkTest() {
         homePage.clickOnUserLink();
     }
+
+    @Test(priority = 3)
+    public void homePageScheduleLinkTest() {
+        homePage.clickOnScheduleLink();
+    }
     @AfterMethod
     public void tearDown() {
         driver.quit();

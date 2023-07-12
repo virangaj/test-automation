@@ -15,6 +15,8 @@ public class HomePage extends TestBase {
     WebElement reportsLink;
     @FindBy(xpath = "//a[@class='content users']")
     WebElement userLink;
+    @FindBy(xpath = "//div[@class='logoSwitcherText']")
+    WebElement scheduleLink;
 
 
     //initialization
@@ -40,6 +42,15 @@ public class HomePage extends TestBase {
         }
         userLink.click();
         return new UserPage();
+    }
+    public SchedulePage clickOnScheduleLink() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println(e.toString());
+        }
+        scheduleLink.click();
+        return new SchedulePage();
     }
 
 
